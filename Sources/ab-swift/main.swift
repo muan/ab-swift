@@ -1,11 +1,11 @@
 let numbers: [Character] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-let answer = numbers.shuffled()[0...3].joined()
+let answer = String(numbers.shuffled().prefix(3))
 var guess = ""
 
 while guess != answer {
     print("guess")
     guess = readLine()!
-    if (guess.count != 4 || !Set(Array(guess)).isSubset(of: Set(numbers))) {
+    guard guess.allSatisfy(\.isNumber) && guess.count == 4 else {
         print("4 numbers please")
         continue
     }
