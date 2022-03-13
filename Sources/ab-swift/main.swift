@@ -1,10 +1,14 @@
-let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+let numbers: [Character] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 let answer = numbers.shuffled()[0...3].joined()
 var guess = ""
 
 while guess != answer {
     print("guess")
     guess = readLine()!
+    if (guess.count != 4 || !Set(Array(guess)).isSubset(of: Set(numbers))) {
+        print("4 numbers please")
+        continue
+    }
     print(compare(guess: guess))
 }
 print("gj")
